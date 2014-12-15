@@ -1,0 +1,31 @@
+@import 'vars.less';
+@import 'animations.less';
+
+//DESKTOP
+@import 'desktop.less';
+
+//DESKTOP Low-Res
+@media only screen and (min-width: @desktop-min) and (max-width: @desktopLowres-max){
+    @import 'desktop-lowres.less';
+}
+
+//TABLET
+@media only screen and (min-width: @tablet-min) and (max-width: @tablet-max){
+    @import 'tablet.less';
+}
+
+//TABLET 7"
+@media only screen and (min-width: @tablet7-min) and (max-width: @tablet7-max){
+    @import 'tablet7.less';
+}
+
+//PHONE
+@media only screen and (max-width: @phone-max){
+    @import 'phone.less';
+}
+
+//PRINT
+@media print{
+    @import 'print.less';
+}
+

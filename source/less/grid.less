@@ -1,0 +1,105 @@
+@import 'vars.less';
+
+@divisions: 12;
+@grr: 2;
+.grid-test{
+    display: inline-block;
+    background: #444;
+    margin: 5px 0;
+    height: 40px;
+    width: 100%;
+    text-align: center;
+    line-height: 40px;
+    color: rgba(255,255,255,0.5);
+    font-weight: 400;
+}
+.grid{
+    .row{
+        margin: 15px 0;
+        width: 100%;
+        &:last-child{
+            padding-right: 0;
+        }
+        &:after{
+            content: "";
+            display: table;
+            clear: both;
+        }
+        .example{
+            background: #444;
+            color: #fff;
+            padding: 10px 0;
+            .box-sizing;
+            text-align: center;
+            display: block;
+            width: 100%;
+        }
+    }
+    [class*='col']{
+        padding-right: 15px;
+        display: inline-block;
+        float: left;
+        .box-sizing;
+    }
+    [class*='col']:last-of-type{
+        padding-right: 0;
+    }
+    .col-spacing1{ padding-right: 5px; }
+    .col-spacing2{ padding-right: 10px; }
+    .col-spacing3{ padding-right: 20px; }
+    .col-spacing4{ padding-right: 30px; }
+    .col-spacing5{ padding-right: 40px; }
+    .col-spacing6{ padding-right: 50px; }
+}
+
+//-----GRID LOOPING
+.grid-loop(@index) when (@index > 0) {
+    @remainder: (@divisions/@index);
+    @remainder-comp: floor(@remainder);
+
+    .grid-loop-grids(@remainder,@remainder-comp) when (@remainder = @remainder-comp){
+        .col@{index}{
+            width: 100% / @index;
+        }
+        .grid-template(@colSpan: @index) when (@colSpan > 2){
+            @reality: @colSpan - 1;
+            .col@{index}-@{reality} {
+                width: (100% / @index) * @reality;
+            }
+
+            .grid-template(@reality);
+        }
+        .grid-template;
+    }
+    .grid-loop-grids(@remainder,@remainder-comp);
+
+    .grid-loop(@index - 1);
+}
+
+.grid-loop(0) {}
+.grid-loop(@divisions);
+//-------END LOOP
+
+@media only screen and (max-width: @tablet7-max){
+    .col3,.col3-2{
+        width: 100%;
+        padding-right: 0 !important;
+        margin: 10px auto;
+    }
+    .col4,.col4-2,.col4-3{
+        width: 50%;
+        &:nth-child(2n):after{
+            content: "";
+            display: inline-block;
+            clear: both;
+        }
+    }
+}
+
+@media only screen and (max-width: @phone-max){
+    .phone-full{
+        margin: 10px 0 !important;
+        width: 100% !important;
+        padding-right: 0 !important;
+    }
+}

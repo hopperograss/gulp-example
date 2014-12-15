@@ -1,0 +1,69 @@
+//Colors
+@color-txt: #444;
+@color-main: #53A1B8;
+@color-neutral: #445a64;
+@color-gray: #ededed;
+@color-dark: #2B303A;
+@color-bkg: #fff;
+
+//Dimensions
+@contentWidth: 1170px;
+
+//Device widths
+@desktop-min: 1025px;
+@desktopLowres-max: 1919px;
+@tablet-max: 1024px;
+@tablet-min: 768px;
+@tablet7-max: 767px;
+@tablet7-min: 481px;
+@phone-max: 480px;
+
+//Z-INDEXES
+@zindex-1: 1;
+@zindex-2: 2;
+@zindex-3: 3;
+@zindex-4: 4;
+@zindex-5: 5;
+@zindex-6: 6;
+@zindex-7: 7;
+@zindex-8: 8;
+@zindex-9: 9;
+@zindex-10: 10;
+
+//----MIXINS----
+.box-sizing {
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+
+.transition (@prop: all, @time: 1s, @ease: linear) {
+    -webkit-transition: @prop @time @ease;
+    -moz-transition: @prop @time @ease;
+    -o-transition: @prop @time @ease;
+    -ms-transition: @prop @time @ease;
+    transition: @prop @time @ease;
+}
+.transform(@sring) {
+    transform: @sring;
+    -webkit-transform: @sring;
+    -moz-transform-transform: @sring;
+}
+.box-shadow(@string) {
+    -webkit-box-shadow: @string;
+    -mox-box-shadow: @string;
+    box-shadow: @string;
+}
+.size(@width,@height) {
+    width: @width;
+    height: @height;
+}
+.animation(@string) {
+    -webkit-animation: @string;
+    -moz-animation: @string;
+    -o-animation: @string;
+    animation: @string;
+}
+.link-cursor{
+  cursor: pointer;
+}
